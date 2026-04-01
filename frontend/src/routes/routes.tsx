@@ -25,6 +25,7 @@ import { EditDepartmentPage, ListDepartmentsPage } from '@/domains/department/pa
 import { ErrorPage, NotFound } from '@/components/errors';
 import { MainLayout } from '@/components/layout';
 import { RoleAndPermission } from '@/domains/role-and-permission/pages';
+import { VerifyCertificatePage } from '@/domains/certificate/pages';
 
 export const routes = [
   {
@@ -40,6 +41,11 @@ export const routes = [
     path: '/auth/setup-password/:token',
     element: <SetupPasswordPage />,
     errorElement: <ErrorPage message='Error loading password setup page' />
+  },
+  {
+    path: '/certificates/verify',
+    element: <VerifyCertificatePage />,
+    errorElement: <ErrorPage message='Error loading certificate verification page' />
   },
   {
     path: '/app',

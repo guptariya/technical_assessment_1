@@ -8,10 +8,19 @@ A comprehensive full-stack web application for managing school operations includ
 skill-test/
 ├── frontend/           # React + TypeScript + Material-UI
 ├── backend/            # Node.js + Express + PostgreSQL
-├── go-service/         # Golang microservice for PDF reports
+├── blockchain/         # Hardhat + Solidity certificate module
 ├── seed_db/           # Database schema and seed data
 └── README.md          # This file
 ```
+
+## ✅ Assessment Implementation Status
+
+This submission is focused on the **Blockchain developer role** and includes supporting fixes in frontend/backend.
+
+- **Problem 1 (Frontend)**: fixed notice `description` binding and submission on Add Notice page.
+- **Problem 2 (Backend)**: completed missing student controller CRUD/status handlers.
+- **Problem 3 (Blockchain)**: implemented smart contract, wallet integration, admin issue flow, verify flow, and metadata handling.
+- **Problem 4/5**: not part of this role-specific submission.
 
 ## 🚀 Quick Start
 
@@ -205,6 +214,37 @@ backend/src/
 3. Integrate Web3 wallet connection
 4. Test certificate issuance and verification flow
 
+#### Blockchain Quick Run (Implemented Flow)
+```bash
+# 1) Start local chain
+cd blockchain
+npm install
+npm run node
+
+# 2) Deploy contract (new terminal)
+cd blockchain
+npm run deploy:local
+```
+
+Set frontend env in `frontend/.env`:
+```bash
+VITE_API_URL=http://localhost:5007
+VITE_CERTIFICATE_CONTRACT_ADDRESS=<deployed_contract_address>
+# Optional for real IPFS upload:
+# VITE_PINATA_JWT=<pinata_jwt>
+```
+
+Then run frontend:
+```bash
+cd frontend
+HUSKY=0 npm install
+npm run dev
+```
+
+Open app and test:
+- Issue certificate from student profile (`/app/students/:id`)
+- Verify certificate from public page (`/certificates/verify`)
+
 ### For Golang Developers
 1. Set up the PostgreSQL database using `seed_db/` files.
 2. Set up and run the Node.js backend by following its setup instructions.
@@ -242,12 +282,22 @@ backend/src/
 ### PDF Generation Service (Go)
 - `GET /api/v1/students/:id/report` - Generate and download a PDF report for a specific student.
 
+## 🖼️ Blockchain Demo Screenshots
+
+### Certificate Issuance (Student Profile)
+
+![Certificate issuance from student profile](./docs/images/blockchain-issuance.png)
+
+### Certificate Verification (Public Verify Page)
+
+![Certificate verification page](./docs/images/blockchain-verify.png)
+
 ## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+2. Create a feature branch (`git checkout -b feature/blockchain-assessment`)
+3. Commit your changes (`git commit -m 'Implement blockchain certificate verification flow'`)
+4. Push to the branch (`git push -u origin feature/blockchain-assessment`)
 5. Open a Pull Request
 
 ## 📄 License

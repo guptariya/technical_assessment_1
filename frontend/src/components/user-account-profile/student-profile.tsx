@@ -7,6 +7,7 @@ import {
   ParentsAndGuardianInformation,
   PersonalDetail
 } from '@/domains/student/components/views';
+import { CertificateManagementPanel } from '@/domains/certificate/components';
 
 type StudentProfileProps = {
   id?: string;
@@ -74,6 +75,14 @@ export const StudentProfile: React.FC<StudentProfileProps> = ({ id }) => {
       <Grid2 size={{ xs: 12, md: 7 }}>
         <Others systemAccess={systemAccess} reporterName={reporterName} />
       </Grid2>
+      {id && (
+        <>
+          <Grid2 size={{ xs: 12, md: 5 }}></Grid2>
+          <Grid2 size={{ xs: 12, md: 7 }}>
+            <CertificateManagementPanel studentId={Number(id)} studentName={name} />
+          </Grid2>
+        </>
+      )}
     </Grid2>
   );
 };
